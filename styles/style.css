@@ -1,0 +1,72 @@
+/* CLASS CUSTOM */
+.flex {
+    display: flex;
+}
+.noAnswer {
+    max-width: 50%;
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ED6454;
+}
+
+/* ONCLICK BTN */
+.selection {
+    display: block;
+    width: 660px;
+    max-height: 360px;
+    position: absolute;
+    z-index: 1;
+    overflow: auto;
+    border-radius: 0 0 5px 5px;
+}
+.result {
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 5%;
+    padding-top: 10px;
+    padding-inline-start: 10px;
+}
+.result li {
+    display: flex;
+    height: 45px;
+    color: rgba(255,255,255,0.95);
+    cursor: pointer;
+}
+
+/* ACTIVE */
+#ingredients.active .icone-chevron img,
+#appareils.active .icone-chevron img,
+#ustensiles.active .icone-chevron img {
+    transform: rotate(180deg);
+}
+#ingredients.active .filter-button,
+#appareils.active .filter-button,
+#ustensiles.active .filter-button {
+    width: 660px;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 15px;
+}
+
+#ingredients.active .filter-title,
+#appareils.active .filter-title,
+#ustensiles.active .filter-title {
+    display: none;
+}
+#ingredients.active .filter-input,
+#appareils.active .filter-input,
+#ustensiles.active .filter-input {
+    display: block;
+    width: 95%;
+    height: 50px;
+    color: rgba(255,255,255,0.90);
+    outline: none;
+}
+
+#ingredients.active .result,
+#appareils.active .result,
+#ustensiles.active .result {
+    display: grid;
+}

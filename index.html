@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <header class="header">
+      <img class="header__logo" src="./public/assets/img/logo.png" alt="Logo" tabindex="1">
+  </header>
+  <main class="container">
+      <section class="container__section">
+          <!-- SEARCH BAR -->
+          <div class="container__searchBar">
+              <input id="searchBar-input" type="search" placeholder="Rechercher une recette">
+               <button>
+                  <img src="./public/assets/svg/magnifying-glass.svg" alt="icon loupe" />
+              </button>
+          </div>
+          <!-- SORT CONTAINER -->
+          <div class="container__filter">
+              <!-- TAG -->
+              <div id="filter-tag"></div>
+              <!-- filter -->
+              <div class="container__filter--section">
+                  <div id="ingredients" class="filter-recipe">
+                      <div class="filter-button" data-name="ingredients">
+                          <p class="filter-title">Ingrédients</p>
+                          <input class="filter-input" type="search" placeholder="Rechercher un ingrédient">
+                          <button class="icone-chevron">
+                              <img src="./public/assets/svg/chevron.svg" alt="icon flèche"/>
+                          </button>
+                      </div>
+                      <div class="selection">
+                          <ul id="selection-ingredients" class="result"></ul>
+                      </div>
+                  </div>
+  
+                  <div id="appareils" class="filter-recipe">
+                      <div class="filter-button" data-name="appareils">
+                          <p class="filter-title">Appareils</p>
+                          <input class="filter-input" type="search" placeholder="Rechercher un appareil" >
+                          <button class="icone-chevron">
+                              <img src="./public/assets/svg/chevron.svg" alt="icon flèche"/>
+                          </button>
+                      </div>
+                      <div class="selection">
+                          <ul id="selection-appareils" class="result"></ul>
+                      </div>
+                  </div>
+  
+                  <div id="ustensiles" class="filter-recipe">
+                      <div class="filter-button" data-name="ustensiles">
+                          <p class="filter-title">Ustensiles</p>
+                          <input class="filter-input" type="search" placeholder="Rechercher un ustensile" >
+                          <button class="icone-chevron">
+                              <img src="./public/assets/svg/chevron.svg" alt="icon flèche"/>
+                          </button>
+                      </div>
+                      <div class="selection">
+                          <ul id="selection-ustensiles" class="result"></ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <section id="recipes-container"></section>
+      <section id="error-message" class="flex"></section>
+    </main>
+    <script type="module" src="/scripts/main.js"></script>
+    <script type="module" src="/scripts/display.js"></script>
+    <script type="module" src="/scripts/searchBar.js"></script>
+    <script type="module" src="/scripts/tags.js"></script>
+  </body>
+</html>

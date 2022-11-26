@@ -1,0 +1,65 @@
+@media screen and (min-width : 1600px) {
+    #recipes-container {
+        margin: 50px 100px;
+    }
+}
+
+@media screen and (max-width : 1300px) {
+    body {
+        padding : 0 20px;
+    }
+}
+
+@media screen and (max-width : 600px) {
+    #filter {
+        flex-direction: column;
+        align-self: center;
+    }
+    #filter > * {
+        width: 100%;
+    }
+    #ingredients.active .filter-button, 
+    #appareils.active .filter-button, 
+    #ustensiles.active .filter-button {
+        width: 100%;
+    }
+    .selection {
+        position: relative;
+        width: 100%;
+
+    }
+
+    /* CARD */
+    #recipes-container {
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 20px;
+        justify-content: center;
+        margin: auto;
+    }
+}
+@media screen and (max-width : 450px) {
+    .info-recipe {
+        padding: 15px;
+    }
+    .card-header,
+    .content-card  {
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    .title-recipe, 
+    .description-recipe {
+        width: 100%;
+        
+    }
+    .title-recipe {
+        margin-top: 0;
+    }
+    .card-timer,
+    .description-recipe {
+        margin-top: 10px;
+    }
+    .description-recipe {
+        -webkit-line-clamp: 3;
+    }
+}

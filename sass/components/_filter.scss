@@ -1,0 +1,47 @@
+.filter-recipe .filter-button {
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    min-width: 170px;
+    height: 69px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 24px 15px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* BACKGROUND */
+#ingredients .filter-button,
+#selection-ingredients  {
+    background: #3282F7;
+}
+#ingredients .filter-button:hover {
+    background: #2866c4;
+}
+#appareils .filter-button,
+#selection-appareils {
+    background: #68D9A4;
+}
+#appareils .filter-button:hover {
+    background: #50aa80;
+}
+#ustensiles .filter-button,
+#selection-ustensiles {
+    background-color: #ED6454;
+}
+#ustensiles .filter-button:hover {
+    background-color: #b84b3f;
+}
+
+.filter-input {
+    font-size: 18px;
+    display: none;
+}
+.filter-input::placeholder {
+    color: rgba(255,255,255,0.80);
+}
+.icone-chevron img {
+    transition: 0.3s linear;
+}
