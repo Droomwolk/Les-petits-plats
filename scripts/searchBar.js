@@ -14,33 +14,21 @@ const searchInput = document.getElementById("searchBar-input");
 export const recipesContainer = document.getElementById("recipes-container");
 const errorMessage = document.getElementById("error-message");
 
-// FUNCTION SEARCH
-export function search(stringValue, newArray) {
-  // Création d'un tableau vide
+// FUNCTION SEARCH Functionnel
+export function searchFunctionel(stringValue, newArray) {
   let sortArray = [];
-  for (let i = 0; i < newArray.length; i++) {
-    // tri à l'aide d'une boucle par nom et description
+  newArray.forEach((recipe) => {
     if (
       newArray[i].name.toLowerCase().includes(stringValue.toLowerCase()) ||
-      newArray[i].description.toLowerCase().includes(stringValue.toLowerCase())
-    ) {
-      // ajout du résultat à notre nouveau tableau
+      newArray[i].description
+        .toLowerCase()
+        .includes(stringValue.toLowerCase()) ||
+      recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(stringValue.toLowerCase())
+      )
+    )
       sortArray.push(newArray[i]);
-    } else {
-      // En cas de no answer, on cherche et affiche un ingrédients
-      for (let j = 0; j < newArray[i].ingredients.length; j++) {
-        if (
-          newArray[i].ingredients[j].ingredient
-            .toLowerCase()
-            .includes(stringValue.toLowerCase())
-        ) {
-          sortArray.push(newArray[i]);
-          break;
-        }
-      }
-    }
-  }
-  return sortArray;
+  });
 }
 
 export function searchRecipe() {
