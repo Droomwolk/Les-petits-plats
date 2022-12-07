@@ -2,12 +2,15 @@ import { recipes } from "../data/recipes.js";
 import { displayRecipe } from "./main.js";
 import { itemselection, search, recipesContainer } from "./searchBar.js";
 
+const searchInput = document.getElementById("searchBar-input");
+
 // FILTRAGE
 function sortIngredients(recipes) {
   const ul = document.getElementById("selection-ingredients");
   ul.addEventListener("click", (e) => {
     recipesContainer.innerHTML = "";
-    const sortRecipe = recipes.filter((recipe) =>
+    let resultRecipe = search(searchInput.value, recipes);
+    const sortRecipe = resultRecipe.filter((recipe) =>
       // La méthode some() teste si au moins un élément du tableau passe le test implémenté par la fonction fournie.
       recipe.ingredients.some((el) =>
         el.ingredient.includes(e.target.dataset.value)
@@ -22,7 +25,8 @@ function sortAppareils(recipes) {
   const ul = document.getElementById("selection-appareils");
   ul.addEventListener("click", (e) => {
     recipesContainer.innerHTML = "";
-    const sortRecipe = recipes.filter((element) =>
+    let resultRecipe = search(searchInput.value, recipes);
+    const sortRecipe = resultRecipe.filter((element) =>
       element.appliance.includes(e.target.dataset.value)
     );
     itemselection(searchTag(sortRecipe));
@@ -33,7 +37,8 @@ function sortUstensiles(recipes) {
   const ul = document.getElementById("selection-ustensiles");
   ul.addEventListener("click", (e) => {
     recipesContainer.innerHTML = "";
-    const sortRecipe = recipes.filter((element) =>
+    let resultRecipe = search(searchInput.value, recipes);
+    const sortRecipe = resultRecipe.filter((element) =>
       element.ustensils.includes(e.target.dataset.value)
     );
     itemselection(searchTag(sortRecipe));

@@ -16,6 +16,7 @@ const errorMessage = document.getElementById("error-message");
 
 // FUNCTION SEARCH
 export function search(stringValue, newArray) {
+  if (stringValue === "") return newArray;
   // Création d'un tableau vide
   let sortArray = [];
   for (let i = 0; i < newArray.length; i++) {
@@ -46,18 +47,18 @@ export function search(stringValue, newArray) {
 export function searchRecipe() {
   // Function qui sera appellé à partir de 3 caractères
   searchInput.addEventListener("keyup", () => {
-    if (searchInput.value.length >= 3) {
-      recipesContainer.innerHTML = "";
-      const stringValue = searchInput.value.toLowerCase();
-      let sortArray = search(stringValue, recipes);
-      // En cas de résultat erroné un message d'erreur apparait
-      if (sortArray == 0) {
-        errorMessage.innerHTML = `<p class="noAnswer">Aucune recettes, ingrédients, ou descriptions ne correspondent avec ce vous cherchez. Essayez : Limonade, Coco, Oignon... </p>`;
-      } else {
-        errorMessage.innerHTML = "";
-        itemselection(searchTag(sortArray));
-      }
+    // if (searchInput.value.length >= 3) {
+    recipesContainer.innerHTML = "";
+    const stringValue = searchInput.value.toLowerCase();
+    let sortArray = search(stringValue, recipes);
+    // En cas de résultat erroné un message d'erreur apparait
+    if (sortArray == 0) {
+      errorMessage.innerHTML = `<p class="noAnswer">Aucune recettes, ingrédients, ou descriptions ne correspondent avec ce vous cherchez. Essayez : Limonade, Coco, Oignon... </p>`;
+    } else {
+      errorMessage.innerHTML = "";
+      itemselection(searchTag(sortArray));
     }
+    // }
   });
 }
 
