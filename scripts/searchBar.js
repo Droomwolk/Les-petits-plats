@@ -15,19 +15,21 @@ export const recipesContainer = document.getElementById("recipes-container");
 const errorMessage = document.getElementById("error-message");
 
 // FUNCTION SEARCH Functionnel
-export function searchFunctionel(stringValue, newArray) {
+export function search(stringValue, newArray) {
   let sortArray = [];
   newArray.forEach((recipe) => {
     if (
-      newArray[i].name.toLowerCase().includes(stringValue.toLowerCase()) ||
-      newArray[i].description
-        .toLowerCase()
-        .includes(stringValue.toLowerCase()) ||
+      recipe.name.toLowerCase().includes(stringValue.toLowerCase()) ||
+      recipe.description.toLowerCase().includes(stringValue.toLowerCase()) ||
+      recipe.appliance.toLowerCase().includes(stringValue.toLowerCase()) ||
       recipe.ingredients.some((ingredient) =>
         ingredient.ingredient.toLowerCase().includes(stringValue.toLowerCase())
+      ) ||
+      recipe.ustensils.some((ustensil) =>
+        ustensil.toLowerCase().includes(stringValue.toLowerCase())
       )
     )
-      sortArray.push(newArray[i]);
+      sortArray.push(recipe);
   });
 }
 
