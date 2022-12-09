@@ -1,6 +1,11 @@
 import { recipes } from "../data/recipes.js";
 import { displayRecipe } from "./main.js";
-import { itemselection, search, recipesContainer } from "./searchBar.js";
+import {
+  itemselection,
+  search,
+  recipesContainer,
+  searchGeneral,
+} from "./searchBar.js";
 
 const searchInput = document.getElementById("searchBar-input");
 
@@ -54,7 +59,9 @@ sortUstensiles(recipes);
 export function searchTag(sortRecipe) {
   let tags = document.querySelectorAll(".tag");
   let sortArray = sortRecipe;
-  tags.forEach((tag) => (sortArray = search(tag.textContent, sortArray)));
+  tags.forEach(
+    (tag) => (sortArray = searchGeneral(tag.textContent, sortArray))
+  );
   displayRecipe(sortArray);
   return sortArray;
 }

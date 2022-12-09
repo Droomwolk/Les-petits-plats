@@ -44,6 +44,51 @@ export function search(stringValue, newArray) {
   return sortArray;
 }
 
+export function searchGeneral(stringValue, newArray) {
+  if (stringValue === "") return newArray;
+  // Création d'un tableau vide
+  let sortArray = [];
+  for (let i = 0; i < newArray.length; i++) {
+    // tri à l'aide d'une boucle par nom et description
+    if (
+      newArray[i].name.toLowerCase().includes(stringValue.toLowerCase()) ||
+      newArray[i].description.toLowerCase().includes(stringValue.toLowerCase())
+    ) {
+      // ajout du résultat à notre nouveau tableau
+      sortArray.push(newArray[i]);
+    } else {
+      // En cas de no answer, on cherche et affiche un ingrédients
+      for (let j = 0; j < newArray[i].ingredients.length; j++) {
+        if (
+          newArray[i].ingredients[j].ingredient
+            .toLowerCase()
+            .includes(stringValue.toLowerCase())
+        ) {
+          sortArray.push(newArray[i]);
+          break;
+        }
+      }
+      if (
+        newArray[i].appliance.toLowerCase().includes(stringValue.toLowerCase())
+      ) {
+        sortArray.push(newArray[i]);
+        break;
+      }
+      for (let j = 0; j < newArray[i].ustensils.length; j++) {
+        if (
+          newArray[i].ustensils[j]
+            .toLowerCase()
+            .includes(stringValue.toLowerCase())
+        ) {
+          sortArray.push(newArray[i]);
+          break;
+        }
+      }
+    }
+  }
+  return sortArray;
+}
+
 export function searchRecipe() {
   // Function qui sera appellé à partir de 3 caractères
   searchInput.addEventListener("keyup", () => {
