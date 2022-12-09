@@ -1,10 +1,10 @@
-import { recipes } from "../data/recipes.js";
-import { display } from "./display.js";
+import { recipes } from "../data/recipes";
+import { display } from "./display";
 import "../sass/main.scss";
 
 // AFFICHAGE GALLERY
 export function displayRecipe(recipes) {
-  recipes.forEach((recipe) => display(recipe));
+  recipes?.forEach((recipe) => display(recipe));
   console.log(recipes);
 }
 

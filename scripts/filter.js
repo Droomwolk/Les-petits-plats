@@ -81,7 +81,7 @@ function request(value, index, self) {
 // Trier par ordre alphabétique
 export function getIngredients(recipes) {
   const list = [];
-  recipes.forEach((recipe) => {
+  recipes?.forEach((recipe) => {
     recipe.ingredients.forEach((el) => list.push(el.ingredient));
   });
   const sortIngredients = list.filter(request);
@@ -91,7 +91,7 @@ export function getIngredients(recipes) {
 
 export function getAppareils(recipes) {
   const list = [];
-  recipes.forEach((recipe) => {
+  recipes?.forEach((recipe) => {
     list.push(recipe.appliance);
   });
   const sortAppareils = list.filter(request);
@@ -101,7 +101,7 @@ export function getAppareils(recipes) {
 
 export function getUstensiles(recipes) {
   const list = [];
-  recipes.forEach((recipe) => {
+  recipes?.forEach((recipe) => {
     recipe.ustensils.forEach((el) => list.push(el));
   });
   const sortUstensiles = list.filter(request);
