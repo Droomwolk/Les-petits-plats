@@ -1,12 +1,12 @@
 import { recipes } from "../data/recipes.js";
 import { searchTag } from "./tags.js";
-import { recipesContainer, itemselection } from "./searchBar.js";
+import { recipesContainer, itemselection, search } from "./searchBar.js";
 
 // BLOCK FILTER
 const btn = document.querySelectorAll(".filter-button");
 const tags = document.getElementById("filter-tag");
 
-// BLOCK FILTER
+// BOUTON FILTER
 const btnIngredients = document.querySelector("#ingredients");
 const btnAppareils = document.querySelector("#appareils");
 const btnUstensiles = document.querySelector("#ustensiles");
@@ -29,6 +29,8 @@ export const resultUstensiles = document.getElementById("selection-ustensiles");
 const selectionIngredients = getIngredients(recipes);
 const selectionAppareils = getAppareils(recipes);
 const selectionUstensiles = getUstensiles(recipes);
+
+const searchInput = document.getElementById("searchBar-input");
 
 // FILTER
 // Affichage et filtrage (avec la func searchresult) des listes.
@@ -163,12 +165,12 @@ function searchresult(input, btn, result, selection) {
 
 function displayTag(e) {
   // Récupération valeur li sélectionné dans la liste
-  const elementParent = document.querySelector(`[data-value="${e}"]`);
+  // const elementParent = document.querySelector(`[data-value="${e}"]`);
   const span = document.createElement("span");
 
   span.classList.add("tag");
   // récupération de la valeur du li sélectionné
-  span.textContent = e;
+  span.textContent = e.target.dataset.value;
   span.insertAdjacentHTML(
     "beforeend",
     `<span class="close-tag" data-name="close"><img  src="../public/assets/svg/x-circle.svg" alt="Btn fermeture"/></span>`
@@ -176,19 +178,19 @@ function displayTag(e) {
   tags.appendChild(span);
 
   // Colorimétrie grace a l'ID
-  if (elementParent.parentNode.id === "selection-ingredients") {
+  if (e.currentTarget.id === "selection-ingredients") {
     span.style.background = "#3282f7";
     span.setAttribute("data-category", "ingredient");
 
     inputIngredients.value = "";
     btnIngredients.classList.remove("active");
-  } else if (elementParent.parentNode.id === "selection-appareils") {
+  } else if (e.currentTarget.id === "selection-appareils") {
     span.style.background = "#68d9a4";
     span.setAttribute("data-category", "appareils");
 
     inputAppareils.value = "";
     btnAppareils.classList.remove("active");
-  } else if (elementParent.parentNode.id === "selection-ustensiles") {
+  } else if (e.currentTarget.id === "selection-ustensiles") {
     span.style.background = "#ed6454";
     span.setAttribute("data-category", "ustensiles");
 
@@ -215,7 +217,8 @@ function closeTag() {
       NewList.delete(e.target.parentNode.parentElement.textContent);
       if (e.currentTarget.dataset.name == "close") {
         recipesContainer.innerHTML = "";
-        itemselection(searchTag(recipes));
+        let resultRecipe = search(searchInput.value, recipes);
+        itemselection(searchTag(resultRecipe));
       }
     });
   });
@@ -230,12 +233,13 @@ function valueTag(result) {
   result.addEventListener("click", (e) => {
     // Function qui permet d'afficher l'élement cliqué si elle n'a pas la valeur parent
     if (!NewList.has(e.target.dataset.value)) {
-      tags.innerHTML = "";
+      // tags.innerHTML = "";
+      displayTag(e);
       NewList.add(e.target.dataset.value);
     }
-    for (let tag of NewList) {
-      displayTag(tag);
-    }
+    // for (let tag of NewList) {
+    //   displayTag(tag);
+    // }
   });
 }
 
