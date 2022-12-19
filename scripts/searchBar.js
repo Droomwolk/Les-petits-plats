@@ -31,6 +31,7 @@ export function search(stringValue, newArray) {
     )
       sortArray.push(recipe);
   });
+  return sortArray;
 }
 
 export function searchGeneral(stringValue, newArray) {
